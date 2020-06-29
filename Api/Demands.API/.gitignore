@@ -1,0 +1,11 @@
+/.vs
+/Demands.API/bin/Debug/netcoreapp3.1/
+/Demands.API/obj/Debug/netcoreapp3.1/
+
+/Demands.Domain/bin/Debug/netcoreapp3.1/*
+/Demands.Domain/obj/Debug/netcoreapp3.1/*
+
+/Demands.Infrastructure/bin/Debug/netcoreapp3.1/*
+/Demands.Infrastructure/obj/Debug/netcoreapp3.1/*
+
+*.CodeAnalysis.resources.dll

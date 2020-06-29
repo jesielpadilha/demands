@@ -1,0 +1,92 @@
+//variables
+$color-primary: #3f51b5
+$color-accent: #ff4364
+$color-success: #4caf50
+$color-info: #2196f3
+$color-warning: #ffb300
+$color-error: #ef5350
+$color-dark: #424242
+$columns: 12
+
+//Material
+mat-form-field
+  width: 100%!important
+
+mat-card
+  margin: 20px
+  &.card-success
+    background-color: $color-success
+    color: #ffffff
+  &.card-info
+    background-color: $color-info
+    color: #ffffff
+  &.card-warning
+    background-color: $color-warning
+    color: #ffffff
+  &.card-error
+    background-color: $color-error
+    color: #ffffff
+  &.card-dark
+    background-color: $color-dark
+    color: #ffffff
+
+.mat-checkbox-inner-container
+  margin-right: 2px!important
+
+//Application
+*
+  box-sizing: border-box
+
+.container
+  width: calc(100% - 10rem)
+  max-width: 100rem
+  margin: auto
+
+.row
+  display: flex
+  flex-wrap: wrap
+
+@for $i from 1 through $columns
+  .col-#{$i}
+    flex: 0 0 100% / $columns * $i
+
+  .col-offset-#{$i}
+    margin-left: 100% / $columns * $i
+
+table
+  width: 100%
+
+.h1-icon-text
+  float: left
+  margin-top: 5px
+
+.input-amount
+  width: 90px
+  font-size: 1.2em
+  border-radius: 6px
+  text-align: center
+  margin-bottom: 5px
+.btn-amount
+  width: 45px!important
+  height: 30px!important
+  border-radius: 6px
+  font-size: 0.8em
+  cursor: pointer
+  background-color: $color-accent
+  border-color: $color-accent
+  color: #ffffff 
+
+.bg-primary
+  background-color: $color-primary
+.bg-accent
+  background-color: $color-accent
+.bg-success
+  background-color: $color-success
+.bg-info
+  background-color: $color-info
+.bg-warning
+  background-color: $color-warning
+.bg-error
+  background-color: $color-error
+.bg-dark
+  background-color: $color-dark

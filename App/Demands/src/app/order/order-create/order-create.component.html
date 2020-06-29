@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-8">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="filter($event)" placeholder="Ex. Coca-Cola">
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <h2 class="mb-0 mt-15 text-right">
+          Total: {{getTotalOrder() | currency: 'R$ '}}
+        </h2>
+      </div>
+    </div>
+    <div class="row" style="max-height: 800px; overflow: auto;">
+      <div class="col-12">
+        <mat-card class="ml-0 mr-0 mb-5 mt-0 bg-dark text-white" *ngFor="let po of products">
+          <mat-card-content>
+            <div class="row">
+              <div class="col-10">
+                <h2 class="mb-0">
+                  {{po.product.name}}
+                </h2>
+                <p>{{po.product.description}}</p>
+              </div>
+              <div class="col-2 text-right">
+                <input type="number" disabled [value]="po.Amount" class="input-amount">
+                <div class="row ">
+                  <div class="col-12 text-right">
+                    <button class="btn-amount" (click)="addItem(po)">
+                      <mat-icon>keyboard_arrow_up</mat-icon>
+                    </button>
+                    <button class="btn-amount" (click)="removeItem(po)">
+                      <mat-icon>keyboard_arrow_down</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="po.Product.Ingredients && po.Product.Ingredients.length > 0">
+              <b class="mr-10">Ingredients:</b>
+              <mat-checkbox class="mr-5" *ngFor="let ingredient of po.product.ingredients" [value]="ingredient"
+                (change)="changeIngredient(po, ingredient)"
+                [checked]="ingredient.checked">
+                {{ingredient.Name}}
+              </mat-checkbox>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <button type="button" mat-raised-button color="primary" class="mt-10 mr-10" (click)="save()">
+      <mat-icon>save</mat-icon>
+      Save
+    </button>
+    <button mat-raised-button (click)="cancel()">
+      Cancel
+    </button>
+  </mat-card-content>
+</mat-card>

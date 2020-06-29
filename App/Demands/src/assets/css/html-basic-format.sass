@@ -1,0 +1,56 @@
+//Variables
+$intervalLength: 100
+
+//** Text Align **//
+$i: 20px
+.text-center
+  text-align: center
+
+.text-left
+  text-align: left
+
+.text-right
+  text-align: right
+
+.text-white
+  color: #ffffff
+
+.text-black
+  color: #000000
+
+.text-decoration
+  text-decoration: none!important
+
+//** Measures **// 
+@for $i from 0 through $intervalLength
+  //margin
+  .mt-#{$i}   
+    margin-top: #{$i}px!important
+  .mb-#{$i}   
+    margin-bottom: #{$i}px!important
+  .ml-#{$i}   
+    margin-left: #{$i}px!important
+  .mr-#{$i}   
+    margin-right: #{$i}px!important
+  //padding
+  .pt-#{$i}   
+    padding-top: #{$i}px!important
+  .pb-#{$i}   
+    padding-bottom: #{$i}px!important
+  .pl-#{$i}   
+    padding-left: #{$i}px!important
+  .pr-#{$i}   
+    padding-right: #{$i}px!important
+  //border
+  .bt-#{$i}   
+     border-top: #{$i}px!important
+  .bb-#{$i}   
+    border-bottom: #{$i}px!important
+  .bl-#{$i}   
+    border-left: #{$i}px!important
+  .br-#{$i}   
+    border-right: #{$i}px!important
+  
+.m-auto
+  margin: auto
+

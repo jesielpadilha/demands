@@ -1,0 +1,15 @@
+<mat-toolbar class="mat-elevation-z4 bg-dark text-white" *ngIf="authService.isAuthenticated()">
+    <a routerLink="/manager/home" class="link-logo">
+        <mat-icon>fastfood</mat-icon> Demands
+    </a>
+    <div class="spacer"></div>
+    <a mat-button [routerLink]="['/manager/products']">Products</a>
+    <a mat-button [routerLink]="['/manager/tables']">Tables</a>
+    <a mat-button [routerLink]="['/manager/categories']">Product Categories</a>
+    <a mat-button [routerLink]="['/manager/ingredients']">Ingredients</a>
+    <a mat-button [routerLink]="['/manager/users']">Users</a>
+    <a mat-raised-button (click)="backCommonArea()">
+        <mat-icon>menu</mat-icon>
+        Common Area
+    </a>
+</mat-toolbar>

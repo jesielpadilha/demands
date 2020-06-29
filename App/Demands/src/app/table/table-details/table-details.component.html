@@ -1,0 +1,41 @@
+<mat-card *ngIf="!table" class="card-info">
+  <mat-card-content class="text-center">
+    <h3>
+      Table not found!
+    </h3>
+  </mat-card-content>
+</mat-card>
+
+<div *ngIf="table">
+  <div class="row">
+    <div class="col-2">     
+      <mat-card [ngClass]="[table.isBusy ? 'bg-accent' : 'bg-primary', 'text-white mr-0']">
+        <img mat-card-image src="/assets/img/table-icon-white.png" alt="Table icon"
+        class="pt-15 pl-5 pr-5 mb-0">
+        <mat-card-content class="text-center">
+          <h2>Table {{table.number}}</h2>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-10">
+      <mat-card class="card-dark mb-0">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-6">
+              <h1 class="mb-0">
+                <mat-icon class="h1-icon-text">reorder</mat-icon>
+                Orders
+              </h1>
+            </div>
+            <div class="col-6 text-right">
+              <button mat-raised-button color="primary" *ngIf="!isNewOrder" (click)="isNewOrder = true">
+                New Order
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <app-order-create *ngIf="isNewOrder" (cancelOrder)="cancelNewOrder()"></app-order-create>
+    </div>
+  </div>
+</div>
