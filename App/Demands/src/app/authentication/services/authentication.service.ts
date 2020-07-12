@@ -46,6 +46,9 @@ export class AuthenticationService implements OnInit {
   }
 
   isAuthenticated() {
+    if(!localStorage.currentUser)
+      return false;
+
     return JSON.parse(localStorage.currentUser) != undefined && JSON.parse(localStorage.currentUser) != null
   }
 

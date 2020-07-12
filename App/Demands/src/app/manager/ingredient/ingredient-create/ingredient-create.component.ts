@@ -7,7 +7,11 @@ import { IIngredient } from 'src/app/models/ingredient.model';
 @Component({
   selector: 'app-ingredient-create',
   templateUrl: './ingredient-create.component.html',
-  styleUrls: ['./ingredient-create.component.sass']
+  styles: [`
+  .mat-raised-button~.mat-raised-button {
+    margin-left: 10px
+  }
+  `]
 })
 export class IngredientCreateComponent implements OnInit {
 

@@ -12,10 +12,6 @@ namespace Demands.Infrastructure.Mapping
             builder.Property(p => p.Price).HasColumnType("decimal(18,2)");
             //keys
             builder.HasKey(p => p.Id);
-            //builder.HasOne(p => p.Category)
-            //    .WithMany(p => p.Products)
-            //    .HasForeignKey(p => p.CategoryId)
-            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

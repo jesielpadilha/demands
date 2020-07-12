@@ -12,10 +12,5 @@ namespace Demands.Domain.Services
         {
             _repository = repository;
         }
-
-        public Product GetProduct(int id)
-        {
-            return _repository.GetProduct(id);
-        }
     }
 }

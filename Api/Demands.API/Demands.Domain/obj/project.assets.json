@@ -8,27 +8,20 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Jesiel\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Jesiel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands.API\\Demands.Domain\\Demands.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands\\Api\\Demands.API\\Demands.Domain\\Demands.Domain.csproj",
       "projectName": "Demands.Domain",
-      "projectPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands.API\\Demands.Domain\\Demands.Domain.csproj",
+      "projectPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands\\Api\\Demands.API\\Demands.Domain\\Demands.Domain.csproj",
       "packagesPath": "C:\\Users\\Jesiel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands.API\\Demands.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands\\Api\\Demands.API\\Demands.Domain\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\Jesiel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -60,18 +53,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

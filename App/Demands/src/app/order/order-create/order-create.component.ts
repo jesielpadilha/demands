@@ -27,7 +27,7 @@ export class OrderCreateComponent implements OnInit {
     //     ingredientsRemoved: []
     //   })
     // })
-    this.productService.getProducts().subscribe(products => {
+    this.productService.getAll().subscribe(products => {
       products.forEach((product: IProduct) => {
         this.allProducts.push({
           product: product,

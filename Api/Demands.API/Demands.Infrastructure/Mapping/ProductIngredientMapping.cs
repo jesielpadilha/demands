@@ -13,10 +13,10 @@ namespace Demands.Infrastructure.Mapping
                 .HasForeignKey(p => p.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //builder.HasOne(p => p.Ingredient)
-            //    .WithMany(p => p.ProductsIngredients)
-            //    .HasForeignKey(p => p.IngredientId)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(p => p.Ingredient)
+                .WithMany(p => p.ProductsIngredients)
+                .HasForeignKey(p => p.IngredientId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

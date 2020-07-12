@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Demands.Domain.Entities
 {
@@ -7,6 +6,6 @@ namespace Demands.Domain.Entities
     {
         public string Name { get; set; }
 
-        //public virtual IList<ProductIngredient> ProductsIngredients { get; set; }
+        public IList<ProductIngredient> ProductsIngredients { get; set; }
     }
 }

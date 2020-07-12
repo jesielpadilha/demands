@@ -1802,11 +1802,12 @@
       ]
     },
     "Microsoft.NETCore.Targets/1.1.0": {
-      "sha512": "ytul8VDzHI3l7cYOJrsneaD6cgUDHj/iw/on0WJgN1+T6tBc/iXvIDRFFLsfcCVUG0Oa0FmnrzV949vgBn2KIg==",
+      "sha512": "aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
       "type": "package",
       "path": "microsoft.netcore.targets/1.1.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -2768,11 +2769,12 @@
       ]
     },
     "System.IO/4.3.0": {
-      "sha512": "7xDto3UkaPKzQsp8I55KTP9FsdBacBIgSjSpk2OchpiERYF40pg9AVbwnFzfEtTV5ACTVZ9ezlsJoYjngD1jyg==",
+      "sha512": "3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
       "type": "package",
       "path": "system.io/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -3128,11 +3130,12 @@
       ]
     },
     "System.Reflection/4.3.0": {
-      "sha512": "WAvgUsbCwPHFguixcP1Igtjug1eXtTAVwGnxNNCmAAUgKpCHHOujT4K3fYfBqVi65t8mV//xUj/nP+co2przxg==",
+      "sha512": "KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
       "type": "package",
       "path": "system.reflection/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -3390,11 +3393,12 @@
       ]
     },
     "System.Reflection.Primitives/4.3.0": {
-      "sha512": "ReXlD3XjkDWQzM+8S2rToFjmoXww1/9HIw28j6cLgkeTcIYgjN0khEK5YDF5V+mwPGlkrzF3ckDWV9z7HSTMcA==",
+      "sha512": "5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
       "type": "package",
       "path": "system.reflection.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -3556,11 +3560,12 @@
       ]
     },
     "System.Runtime/4.3.0": {
-      "sha512": "mfuxVq1vuBbfBIUOJRbm9EVx+s+S3oNTWEXJy1GaiPCy3yh4/zBJi/4dya6UlcwY2m1Yjqd54aATFAshEiJzzA==",
+      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
       "type": "package",
       "path": "system.runtime/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4292,11 +4297,12 @@
       ]
     },
     "System.Text.Encoding/4.3.0": {
-      "sha512": "Z1wNsQ9pFrkMQvtDEvV8ApsoVVCExWHhSlkNLwc0/iNSiMf20gDcOymv0kTaCyv7ybsEKgMtaV5CiByl7sYwWQ==",
+      "sha512": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
       "type": "package",
       "path": "system.text.encoding/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4627,11 +4633,12 @@
       ]
     },
     "System.Threading.Tasks/4.3.0": {
-      "sha512": "reeAyxF9YmIUGT18/3Z77e9da0pM548KfN1CNboZYuFs+7rtY8sZTDBuYHQDLSM4+Ug//d1PYwgMLNnjz0rskA==",
+      "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "type": "package",
       "path": "system.threading.tasks/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4973,27 +4980,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jesiel\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Jesiel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands.API\\Demands.Infrastructure\\Demands.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands\\Api\\Demands.API\\Demands.Infrastructure\\Demands.Infrastructure.csproj",
       "projectName": "Demands.Infrastructure",
-      "projectPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands.API\\Demands.Infrastructure\\Demands.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands\\Api\\Demands.API\\Demands.Infrastructure\\Demands.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Jesiel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands.API\\Demands.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands\\Api\\Demands.API\\Demands.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\Jesiel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -5005,8 +5005,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands.API\\Demands.Domain\\Demands.Domain.csproj": {
-              "projectPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands.API\\Demands.Domain\\Demands.Domain.csproj"
+            "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands\\Api\\Demands.API\\Demands.Domain\\Demands.Domain.csproj": {
+              "projectPath": "C:\\Users\\Jesiel\\Documents\\Visual Studio 2019\\Projects\\Demands\\Api\\Demands.API\\Demands.Domain\\Demands.Domain.csproj"
             }
           }
         }
@@ -5051,18 +5051,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 //product
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductUpdateComponent } from './product/product-update/product-update.component';
 //category
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   //product
   { path: 'products', component: ProductListComponent },
   { path: 'products/new', component: ProductCreateComponent },
+  { path: 'products/update/:id', component: ProductUpdateComponent },
   //category
   { path: 'categories', component: CategoryListComponent },
   { path: 'categories/new', component: CategoryCreateComponent },

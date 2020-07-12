@@ -1,10 +1,10 @@
 <app-navbar-admin></app-navbar-admin>
 <mat-card class="mat-elevation-z4">
     <mat-card-title>
-        New Product
+        Update Product
     </mat-card-title>
     <mat-card-content>
-        <form method="post" [formGroup]="form" (ngSubmit)="create(form.value)" autocomplete="off">
+        <form method="post" [formGroup]="form" (ngSubmit)="update(form.value)" autocomplete="off">
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input type="text" formControlName="name" matInput required>

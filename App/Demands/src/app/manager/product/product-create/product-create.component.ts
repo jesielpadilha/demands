@@ -1,68 +1,67 @@
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ProductService } from '../Services/product.service';
+import { Router } from '@angular/router';
+import { IProduct } from 'src/app/models/product.model';
+import { ICategoryProduct } from 'src/app/models/category-product.model';
+import { CategoryService } from '../../category/services/category.service';
+import { IIngredient } from 'src/app/models/ingredient.model';
+import { IngredientService } from '../../ingredient/services/ingredient.service';
 
 @Component({
     templateUrl: 'product-create.component.html',
-    styleUrls: ['./product-create.component.sass']
+    styles: [`
+  .mat-raised-button~.mat-raised-button {
+    margin-left: 10px
+  }
+  `]
 })
-export class ProductCreateComponent {
-    visible = true;
-    selectable = true;
-    removable = true;
-    separatorKeysCodes: number[] = [ENTER, COMMA];
-    fruitCtrl = new FormControl();
-    filteredFruits: Observable<string[]>;
-    fruits: string[] = [];
-    allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+export class ProductCreateComponent implements OnInit {
 
-    @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
-    @ViewChild('auto') matAutocomplete: MatAutocomplete;
+    form: FormGroup
+    categoriesProduct: ICategoryProduct[] = []
+    ingredientsList: IIngredient[] = []
+    constructor(private productService: ProductService, private categoryService: CategoryService, private ingredientService: IngredientService,
+        private router: Router, private formBuilder: FormBuilder) { }
 
-    constructor() {
-        this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-            startWith(null),
-            map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
+    ngOnInit(): void {
+        this.form = this.formBuilder.group({
+            name: new FormControl('', Validators.required),
+            description: new FormControl('', Validators.required),
+            price: new FormControl('', [
+                Validators.required,
+                Validators.pattern(/[0-9]/)
+            ]),
+            stock: new FormControl('', [
+                Validators.required,
+                Validators.pattern(/[0-9]/)
+            ]),
+            categoryId: new FormControl('', Validators.required),
+            ingredients: new FormControl(''),
+        })
+
+        this.categoryService.getAll().subscribe(categories => {
+            this.categoriesProduct = categories
+        })
+
+        this.ingredientService.getAll().subscribe(ingredients => {
+            this.ingredientsList = ingredients
+        })
     }
 
-    add(event: MatChipInputEvent): void {
-        const input = event.input;
-        const value = event.value;
+    create(item: IProduct) {
+        item.productsIngredients = item.ingredients.map(ingredientId => {
+            return { ingredientId: ingredientId }
+        })
 
-        // Add our fruit
-        if ((value || '').trim()) {
-            this.fruits.push(value.trim());
-        }
-
-        // Reset the input value
-        if (input) {
-            input.value = '';
-        }
-
-        this.fruitCtrl.setValue(null);
-    }
-
-    remove(fruit: string): void {
-        const index = this.fruits.indexOf(fruit);
-
-        if (index >= 0) {
-            this.fruits.splice(index, 1);
-        }
-    }
-
-    selected(event: MatAutocompleteSelectedEvent): void {
-        this.fruits.push(event.option.viewValue);
-        this.fruitInput.nativeElement.value = '';
-        this.fruitCtrl.setValue(null);
-    }
-
-    private _filter(value: string): string[] {
-        const filterValue = value.toLowerCase();
-
-        return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+        this.productService.add(item).subscribe(res => {
+            if (res) {
+                this.router.navigate(['/manager/products'])
+                return
+            }
+            alert('Failed to add')
+            return
+        })
     }
 }

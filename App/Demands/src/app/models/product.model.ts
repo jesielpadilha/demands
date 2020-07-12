@@ -9,5 +9,6 @@ export interface IProduct {
     stock: number
     categoryId: number
     category: ICategoryProduct
-    productsIngredients?: IIngredient[]
+    productsIngredients?: any[]
+    ingredients?: any[]
 }

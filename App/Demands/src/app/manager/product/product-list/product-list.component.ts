@@ -5,28 +5,31 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { ProductService } from '../Services/product.service';
-import { ProductDetailsDialog } from '../product-details-dialog.component';
 
 @Component({
   selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.sass']
+  templateUrl: './product-list.component.html'
 })
 export class ProductListComponent implements OnInit {
 
   products: IProduct[]
 
   displayedColumns: string[] = ['Id', 'Name', 'Price', 'Stock', 'Category', 'Actions'];
+
   dataSource: MatTableDataSource<IProduct>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
+  @ViewChild('swalEntity') private swalEntity: SwalComponent;
 
   constructor(private productService: ProductService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(products =>{
-      console.log(products)
-      this.dataSource = new MatTableDataSource<IProduct>(products);
+    this.loadData();
+  }
+
+  loadData() {
+    this.productService.getAll().subscribe(items => {
+      this.dataSource = new MatTableDataSource<IProduct>(items);
       this.dataSource.paginator = this.paginator;
     })
   }
@@ -40,19 +43,84 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  getProductDetails(product) {
-    this.dialog.open(ProductDetailsDialog, {
-      data: product
-    });
+  details(item) {
+    this.productService.getById(item.id).subscribe(res => {
+      this.swalEntity.update({
+        title: 'Item Details',
+        html: this.getDetailsTemplate(res),
+        icon: null,
+        toast: false,
+        position: 'center',
+        timer: 0
+      })
+      this.swalEntity.fire()
+    })
   }
 
-  deleteProduct(product) {
-    console.log('delete this product: ', product)
+  delete(item) {
+    this.productService.delete(item.id).subscribe(res => {
+      if (res) {
+        this.loadData()
+        this.swalEntity.update({
+          title: 'Item deleted successfully',
+        })
+        this.swalEntity.fire()
+      } else {
+        this.swalEntity.update({
+          title: 'Fail to delete',
+          icon: 'error'
+        })
+      }
+    })
   }
 
-  beforeDelete(product) {
+  beforeDelete(item) {
     this.deleteSwal.update({
-      html: `<p>Do you really wanna delete the product: <b>${product.Name}</b>?</p>`
+      html: `<p>Do you really wanna delete the product: <b>${item.name}</b>?</p>`
     });
+  }
+
+  getDetailsTemplate(item: IProduct): string {
+    let ingredients: string;
+    if (item.productsIngredients !== null && item.productsIngredients.length > 0) {
+      ingredients = item.productsIngredients.map(p => p.ingredient.name).join(', ');
+    } else {
+      ingredients = '--'
+    }
+    return `
+     <table>
+        <tr>
+          <th>Name</th>
+          <td>${item.name}</td>
+        </tr> 
+        <tr>
+          <th>Description</th>
+          <td>${item.description}</td>
+        </tr> 
+        <tr>
+          <th>Price</th>
+          <td>${item.price}</td>
+        </tr>
+        <tr>
+          <th>Stock</th>
+          <td>${item.stock}</td>
+        </tr>
+        <tr>
+          <th>Category</th>
+          <td>${item?.category.name}</td>
+        </tr>
+        <tr>
+          <th>Ingredients</th>
+          <td>${ingredients}</td>
+        </tr>
+      </tr>
+     </table>
+    `
   }
 }
+
+// Name: ${item.name} <br/>
+// Price: ${item.price} <br/>
+// Stock: ${item.stock} <br/>
+// Category: ${item?.category.name} <br/>
+// Ingredients: ${ingredients} <br/>

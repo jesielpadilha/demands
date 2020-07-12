@@ -17,9 +17,9 @@ namespace Demands.Domain.Entities
 
         public int CategoryId { get; set; }
 
-        public virtual CategoryProduct Category { get; set; }
+        public CategoryProduct Category { get; set; }
 
-        public virtual IList<ProductIngredient> ProductsIngredients { get; set; }
+        public IList<ProductIngredient> ProductsIngredients { get; set; }
 
         //public virtual IList<ProductOrder> ProductsOrder { get; set; }
     }
