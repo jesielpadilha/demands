@@ -23,7 +23,7 @@ namespace Demands.API.Controllers
             var product = _service.GetById(id);
             if (product == null) return NotFound();
 
-            product.ProductsIngredients = product.ProductsIngredients.Select(p => new ProductIngredient 
+            product.ProductsIngredients = product.ProductsIngredients.Select(p => new ProductIngredient
             {
                 ProductId = p.ProductId,
                 IngredientId = p.IngredientId,
@@ -35,6 +35,37 @@ namespace Demands.API.Controllers
             }).ToList();
 
             return Ok(product);
+        }
+
+        [HttpGet("get-all-products")]
+        public IActionResult GetAllProducts()
+        {
+            var products = _service.GetAll();
+
+            products = products.Select(p => new Product
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                Stock = p.Stock,
+                CategoryId = p.CategoryId,
+                Category = p.Category,
+                ProductsIngredients = p.ProductsIngredients.Any()
+                ? p.ProductsIngredients.Select(pi => new ProductIngredient
+                {
+                    ProductId = pi.ProductId,
+                    IngredientId = pi.IngredientId,
+                    Ingredient = new Ingredient
+                    {
+                        Id = pi.IngredientId,
+                        Name = pi.Ingredient.Name
+                    }
+                }).ToList()
+                : null
+            }).ToList();
+
+            return Ok(products);
         }
     }
 }

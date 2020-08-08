@@ -3,7 +3,8 @@ import { IProductOrder } from './product-order.model';
 
 export interface IOrder {
     id: number
-    products: IProductOrder[] 
+    productsOrder: IProductOrder[] 
     observation?: string
-    table: ITable
+    tableId: number
+    table?: ITable
 }

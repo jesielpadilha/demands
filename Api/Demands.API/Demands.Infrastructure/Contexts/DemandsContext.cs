@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Demands.Domain.Entities;
+using Demands.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demands.Infrastructure.Contexts
@@ -21,12 +22,23 @@ namespace Demands.Infrastructure.Contexts
         public DbSet<Table> Table { get; set; }
         public DbSet<ProductIngredient> ProductIngredient { get; set; }
         public DbSet<ProductOrderIngredient> ProductOrderIngredient { get; set; }
+        public DbSet<Bill> Bill { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ProductIngredient>().HasKey(p => new { p.ProductId, p.IngredientId });
+            modelBuilder.ApplyConfiguration(new ProductIngredientMapping());
+            modelBuilder.ApplyConfiguration(new ProductMapping());
+            modelBuilder.ApplyConfiguration(new CategoryProductMapping());
+            modelBuilder.ApplyConfiguration(new IngredientMapping());
+            modelBuilder.ApplyConfiguration(new OrderMapping());
+            modelBuilder.ApplyConfiguration(new TableMapping());
+            modelBuilder.ApplyConfiguration(new TrackOrderMapping());
+            modelBuilder.ApplyConfiguration(new UserMapping());
+            modelBuilder.ApplyConfiguration(new ProductOrderMapping());
+            modelBuilder.ApplyConfiguration(new ProductOrderIngredientMapping());
+            modelBuilder.ApplyConfiguration(new BillMapping());
         }
 
         public override int SaveChanges()

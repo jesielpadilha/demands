@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication/services/authentication.service';
 import { Router } from '@angular/router';
-import { TableService } from '../services/table.service';
 import { ITable } from '../models/table.model';
+import { TableService } from '../manager/table/services/table.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +20,9 @@ export class HomeComponent implements OnInit {
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/authentication/login'])
     } else {
-      this.tables = this.tableService.getAll()
+       this.tableService.getAll().subscribe(tables => {
+        this.tables = tables
+       })
     }
   }
 }

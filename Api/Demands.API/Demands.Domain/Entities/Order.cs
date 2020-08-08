@@ -6,12 +6,14 @@ namespace Demands.Domain.Entities
     {
         public string Observation { get; set; }
 
-        public virtual int TableId { get; set; }
-
+        public int TableId { get; set; }
         public virtual Table Table { get; set; }
 
-        public virtual IList<ProductOrder> ProductsOrder { get; set; }
+        public int BillId { get; set; }
+        public virtual Bill Bill { get; set; }
 
-        public virtual IList<TrackOrder> TrackersOrder { get; set; }
+        public IList<ProductOrder> ProductsOrder { get; set; }
+
+        public IList<TrackOrder> TrackersOrder { get; set; }
     }
 }

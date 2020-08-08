@@ -5,7 +5,7 @@ namespace Demands.Domain.Entities
 {
     public class TrackOrder : EntityBase
     {
-        public DateTime DateRegistration { get; set; }
+        public DateTime RegistrationDate { get; set; }
 
         public StatusOrder Status { get; set; }
 
@@ -26,5 +26,7 @@ namespace Demands.Domain.Entities
         Ready = 3,
         [Description("Delivered")]
         Delivered = 4,
+        [Description("Concluded")]
+        Concluded = 5,
     }
 }

@@ -9,8 +9,12 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+//table
 import { TableDetailsComponent } from './table/table-details/table-details.component';
+//order
+import { OrderListComponent } from './order/order-list/order-list.component';
 import { OrderCreateComponent } from './order/order-create/order-create.component';
+
 //Libs
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
@@ -19,8 +23,11 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    //table
     TableDetailsComponent,
-    OrderCreateComponent
+    //order
+    OrderListComponent,
+    OrderCreateComponent,
   ],
   imports: [
     BrowserModule,

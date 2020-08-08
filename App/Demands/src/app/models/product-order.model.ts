@@ -1,10 +1,12 @@
 import { IProduct } from './product.model'
 import { IIngredient } from './ingredient.model'
+import { IProductOrderIngredient } from './productOrderIngredient.model'
 
 export interface IProductOrder {
-    product: IProduct
+    productId: number
+    product?: IProduct
     amount: number
-    ingredientsAdded: IIngredient[]
-    ingredientsRemoved: IIngredient[]
+    ingredients?: IIngredient[]
     observation?: string
+    productOrderIngredients: IProductOrderIngredient[]
 }

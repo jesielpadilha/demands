@@ -17,7 +17,11 @@ namespace Demands.Infrastructure.Repositories
 
         public IList<Product> GetAll()
         {
-            return _context.Product.Include(p => p.Category).ToList();
+            return _context.Product
+                .Include(p => p.Category)
+                .Include(p => p.ProductsIngredients)
+                .ThenInclude(p => p.Ingredient)
+                .ToList();
         }
 
         public Product GetById(int id)

@@ -13,7 +13,7 @@ export class ProductService {
     constructor(private http: HttpClient) { }
 
   getAll(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`${urlAPI}product`, defaultHttpOptions)
+    return this.http.get<IProduct[]>(`${urlAPI}product/get-all-products`, defaultHttpOptions)
       .pipe(
         tap<any>(data => {
           console.log('Service: ', data)

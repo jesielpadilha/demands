@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
 })
-export class CategoryListComponent{
+export class CategoryListComponent {
 
   displayedColumns: string[] = ['Id', 'Name', 'Actions'];
 
@@ -22,14 +22,14 @@ export class CategoryListComponent{
   constructor(private categoryService: CategoryService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.loadData();    
+    this.loadData();
   }
 
-  loadData(){
-    this.categoryService.getAll().subscribe(items =>{
+  loadData() {
+    this.categoryService.getAll().subscribe(items => {
       this.dataSource = new MatTableDataSource<ICategoryProduct>(items);
       this.dataSource.paginator = this.paginator;
-    })   
+    })
   }
 
   applyFilter(event: Event) {
@@ -42,9 +42,9 @@ export class CategoryListComponent{
   }
 
   details(item) {
-    this.categoryService.getById(item.id).subscribe(res =>{
+    this.categoryService.getById(item.id).subscribe(res => {
       console.log(res);
-    })   
+    })
     this.swalEntity.update({
       title: 'Item Details',
       html: `Name: ${item.name}`,
@@ -57,25 +57,25 @@ export class CategoryListComponent{
   }
 
   delete(item) {
-    this.categoryService.delete(item.id).subscribe(res =>{
-      if(res){
+    this.categoryService.delete(item.id).subscribe(res => {
+      if (res) {
         this.loadData()
         this.swalEntity.update({
           title: 'Item deleted successfully',
         })
         this.swalEntity.fire()
-      }else{
+      } else {
         this.swalEntity.update({
           title: 'Fail to delete',
           icon: 'error'
         })
       }
-    }) 
+    })
   }
 
   beforeDelete(item) {
     this.deleteSwal.update({
       html: `<p>Do you really wanna delete the category: <b>${item.name}</b>?</p>`
     });
-  }  
+  }
 }

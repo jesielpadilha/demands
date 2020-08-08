@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSnackBarModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatSlideToggleModule,
   ],
   exports: [
     MatCardModule,
@@ -55,6 +57,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSnackBarModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatSlideToggleModule,
   ]
 })
 export class MaterialModule { }

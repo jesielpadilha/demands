@@ -4,5 +4,6 @@ namespace Demands.Domain.Interfaces.Services
 {
     public interface ITableService : IServiceBase<Table>
     {
+        Table ChangeBusyStatus(int id);
     }
 }

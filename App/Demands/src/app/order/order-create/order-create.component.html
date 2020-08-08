@@ -1,6 +1,14 @@
 <mat-card>
   <mat-card-content>
     <div class="row">
+      <div class="col-12">
+        <mat-form-field>
+          <mat-label>Observation</mat-label>
+          <input matInput [(ngModel)]="observationOrder">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-8">
         <mat-form-field>
           <mat-label>Filter</mat-label>
@@ -25,7 +33,7 @@
                 <p>{{po.product.description}}</p>
               </div>
               <div class="col-2 text-right">
-                <input type="number" disabled [value]="po.Amount" class="input-amount">
+                <input type="number" disabled [value]="po.amount" class="input-amount text-white">
                 <div class="row ">
                   <div class="col-12 text-right">
                     <button class="btn-amount" (click)="addItem(po)">
@@ -38,12 +46,11 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="po.Product.Ingredients && po.Product.Ingredients.length > 0">
+            <div *ngIf="po.product.productsIngredients != undefined && po.product.productsIngredients.length > 0">
               <b class="mr-10">Ingredients:</b>
-              <mat-checkbox class="mr-5" *ngFor="let ingredient of po.product.ingredients" [value]="ingredient"
-                (change)="changeIngredient(po, ingredient)"
-                [checked]="ingredient.checked">
-                {{ingredient.Name}}
+              <mat-checkbox class="mr-5" *ngFor="let pi of po.product?.productsIngredients" [value]="pi.ingredient"
+                (change)="changeIngredient(po, pi.ingredient)" [checked]="true">
+                {{pi.ingredient.name}}
               </mat-checkbox>
             </div>
           </mat-card-content>

@@ -8,6 +8,8 @@ namespace Demands.Infrastructure.Mapping
     {
         public void Configure(EntityTypeBuilder<ProductIngredient> builder)
         {
+            builder.HasKey(p => new { p.ProductId, p.IngredientId });
+
             builder.HasOne(p => p.Product)
                 .WithMany(p => p.ProductsIngredients)
                 .HasForeignKey(p => p.ProductId)

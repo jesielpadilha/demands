@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TableDetailsComponent } from './table/table-details/table-details.component';
 import { AuthGuard } from './auth.guard';
+import { OrderListComponent } from './order/order-list/order-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'authentication/login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'table-details/:id', component: TableDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'orders', component: OrderListComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -14,12 +14,6 @@ namespace Demands.Infrastructure.Mapping
                 .WithMany(p => p.ProductOrderIngredients)
                 .HasForeignKey(p => p.ProductOrderId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-          
-            //builder.HasOne(p => p.Ingredient).
-            //    .WithMany(p => p.ProductOrderIngredients)
-            //    .HasForeignKey(p => p.IngredientAddedId)
-            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

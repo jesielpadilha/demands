@@ -27,7 +27,7 @@ namespace Demands.API
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200")
+                        builder.WithOrigins("*")
                             .AllowAnyOrigin()
                             .AllowAnyHeader()
                             .AllowAnyMethod();
@@ -40,7 +40,7 @@ namespace Demands.API
 
             //services
             services.RegisterRepositories();
-            services.RegisterServies();
+            services.RegisterServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

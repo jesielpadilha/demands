@@ -8,9 +8,19 @@ namespace Demands.API.Controllers
     [ApiController]
     public class TableController : ControllerBase<Table, ITableService>
     {
+        private readonly ITableService _service;
         public TableController(ITableService service) : base(service)
         {
-            
+            _service = service;
+        }
+
+        [HttpGet("change-busy-status/{id}")]
+        public IActionResult ChangeBusyStatus(int id)
+        {
+            var table = _service.ChangeBusyStatus(id);
+            if (table == null) return NotFound(false);
+
+            return Ok(table);
         }
     }
 }

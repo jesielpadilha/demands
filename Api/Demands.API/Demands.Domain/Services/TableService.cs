@@ -12,5 +12,10 @@ namespace Demands.Domain.Services
         {
             _repository = repository;
         }
+
+        public Table ChangeBusyStatus(int id)
+        {
+            return _repository.ChangeBusyStatus(id);
+        }
     }
 }

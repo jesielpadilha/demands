@@ -82,4 +82,18 @@ export class TableService {
       })
     )
   }
+
+  chnageBusyStatus(id: number) : Observable<ITable>{
+    return this.http.get<ITable[]>(`${urlAPI}table/change-busy-status/${id}`, defaultHttpOptions)
+    .pipe(
+      tap<any>(data => {
+        console.log('Service: ', data)
+        return of(data)
+      }), 
+      catchError(error => {
+        console.error(error)
+        return of(false);
+      })
+    )
+  }
 }

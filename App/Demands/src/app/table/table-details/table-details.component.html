@@ -8,14 +8,17 @@
 
 <div *ngIf="table">
   <div class="row">
-    <div class="col-2">     
+    <div class="col-2">
       <mat-card [ngClass]="[table.isBusy ? 'bg-accent' : 'bg-primary', 'text-white mr-0']">
-        <img mat-card-image src="/assets/img/table-icon-white.png" alt="Table icon"
-        class="pt-15 pl-5 pr-5 mb-0">
+        <img mat-card-image src="/assets/img/table-icon-white.png" alt="Table icon" class="pt-15 pl-5 pr-5 mb-0">
         <mat-card-content class="text-center">
           <h2>Table {{table.number}}</h2>
         </mat-card-content>
       </mat-card>
+      <mat-slide-toggle (change)="changeBusyStatus(table.id)" color="primary" [checked]="table.isBusy"
+        id="isBusySwitch">
+        Is Busy?
+      </mat-slide-toggle>
     </div>
     <div class="col-10">
       <mat-card class="card-dark mb-0">
@@ -35,7 +38,26 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <app-order-create *ngIf="isNewOrder" (cancelOrder)="cancelNewOrder()"></app-order-create>
+      <app-order-create *ngIf="isNewOrder" (cancelOrder)="cancelNewOrder()" (orderFinished)="orderFinished()">
+      </app-order-create>
+      <mat-card *ngIf="!isNewOrder && ordersTable.length > 0">
+        <mat-card-subtitle>
+          <h3>Orders Table</h3>
+        </mat-card-subtitle>
+        <mat-card-content>
+          <ul *ngFor="let item of ordersTable">
+            <li>
+              <b>Nº {{item.id}}</b> - Total: <b>{{getTotalOrder(item.productsOrder) | currency}}</b> -
+              <b>{{getOrderStatus(item.trackersOrder)}}</b>
+              <div *ngFor="let itemOrder of item.productsOrder">
+                {{itemOrder.amount}} X {{itemOrder.product.name}}
+              </div>
+              <hr>
+              Obs.: {{item.observation}}
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>

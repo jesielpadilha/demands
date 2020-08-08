@@ -24,9 +24,11 @@ namespace Demands.Infrastructure.Extensions
             services.AddScoped<ICategoryProductRepository, CategoryProductRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ITrackOrderRepository, TrackOrderRepository>();
+            services.AddScoped<IBillRepository, BillRepository>();
         }
 
-        public static void RegisterServies(this IServiceCollection services)
+        public static void RegisterServices(this IServiceCollection services)
         {
             services.AddSingleton<ISecurityService, SecurityService>();
             services.AddScoped<IUserService, UserService>();
@@ -35,6 +37,8 @@ namespace Demands.Infrastructure.Extensions
             services.AddScoped<ICategoryProductService, CategoryProductService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ITrackOrderService, TrackOrderService>();
+            services.AddScoped<IBillService, BillService>();
         }
     }
 }
