@@ -19,7 +19,7 @@ namespace Demands.Infrastructure.Repositories
             _context.SaveChanges();
             return bill;
         }
-
+e 
         public bool CloseBill(Bill bill, Payment payment)
         {
 
@@ -40,7 +40,7 @@ namespace Demands.Infrastructure.Repositories
                 transaction.Rollback();
 
                 Console.WriteLine(e);
-                throw new Exception("Fail to close the bill");
+                throw new Exception("Fail to close the bill", e);
             }
         }
     }

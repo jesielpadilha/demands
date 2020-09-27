@@ -7,4 +7,5 @@ export interface IOrder {
     observation?: string
     tableId: number
     table?: ITable
+    billId?: number
 }

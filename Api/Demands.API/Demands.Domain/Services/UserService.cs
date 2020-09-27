@@ -10,7 +10,6 @@ namespace Demands.Domain.Services
         private readonly ISecurityService _securityService;
         private readonly ITokenService _tokenService;
 
-
         public UserService(IUserRepository repository, ISecurityService securityService, ITokenService tokenService) : base(repository)
         {
             _repository = repository;
@@ -40,7 +39,7 @@ namespace Demands.Domain.Services
             var user = _repository.Login(username, password);
 
             if (user == null) return null;
-
+            
             user.Token = _tokenService.GenerateToken(user);
             return user;
         }

@@ -24,7 +24,6 @@ namespace Demands.Infrastructure.Contexts
         public DbSet<ProductOrderIngredient> ProductOrderIngredient { get; set; }
         public DbSet<Bill> Bill { get; set; }
         public DbSet<Payment> Payment { get; set; }
-        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -17,6 +17,7 @@ import { OrderCreateComponent } from './order/order-create/order-create.componen
 
 //Libs
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     //order
     OrderListComponent,
     OrderCreateComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

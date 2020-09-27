@@ -1,6 +1,6 @@
 /.vs
-/Demands.API/bin/Debug/
-/Demands.API/obj/Debug/
+/Demands.API/bin/
+/Demands.API/obj/
 
 /Demands.Domain/bin/
 /Demands.Domain/obj/
@@ -8,4 +8,22 @@
 /Demands.Infrastructure/bin/
 /Demands.Infrastructure/obj/
 
+
+/Demands.API/Demands.API/obj/project.assets.json
+/Demands.API/Demands.API/obj/project.nuget.cache
+/Demands.API/Demands.Domain/obj/project.assets.json
+/Demands.API/Demands.Domain/obj/project.nuget.cache
+/Demands.API/Demands.Infrastructure/obj/project.assets.json
+/Demands.API/Demands.Infrastructure/obj/project.nuget.cache
+/Demands.API/Demands.API/obj/Debug/netcoreapp3.0/Demands.API.assets.cache
+/Demands.API/Demands.API/obj/Debug/netcoreapp3.0/Demands.API.csproj.FileListAbsolute.txt
+/Demands.API/Demands.API/obj/Debug/netcoreapp3.0/Demands.API.exe
+/Demands.API/Demands.API/obj/Demands.API.csproj.EntityFrameworkCore.targets
+/Demands.API/Demands.API/obj/Demands.API.csproj.nuget.g.targets
+/Demands.API/Demands.Domain/obj/Demands.Domain.csproj.nuget.g.targets
+/Demands.API/Demands.Infrastructure/obj/Demands.Infrastructure.csproj.EntityFrameworkCore.targets
+/Demands.API/Demands.Infrastructure/obj/Demands.Infrastructure.csproj.nuget.g.targets
+
 *.CodeAnalysis.resources.dll
+
+

@@ -104,6 +104,34 @@ namespace Demands.Infrastructure.Migrations
                     b.ToTable("Order");
                 });
 
+            modelBuilder.Entity("Demands.Domain.Entities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BillId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentMethod")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RegistrationDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<decimal>("Value")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BillId");
+
+                    b.ToTable("Payment");
+                });
+
             modelBuilder.Entity("Demands.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -304,6 +332,15 @@ namespace Demands.Infrastructure.Migrations
                     b.HasOne("Demands.Domain.Entities.Table", "Table")
                         .WithMany()
                         .HasForeignKey("TableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Demands.Domain.Entities.Payment", b =>
+                {
+                    b.HasOne("Demands.Domain.Entities.Bill", "Bill")
+                        .WithMany()
+                        .HasForeignKey("BillId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

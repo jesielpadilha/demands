@@ -16,19 +16,19 @@ export class NavbarComponent implements OnInit {
   constructor(public authService: AuthenticationService, public commonService: CommonService,
     private router: Router) {
   }
-  
+
   ngOnInit(): void {
     if(this.authService.isAuthenticated()){
       this.userAuthenticated = this.authService.getAuthenticatedUser()
     }
   }
 
-  goManagerArea(){
+  goManagerArea() {
     this.commonService.setAdmin()
     this.router.navigate(['manager/home'])
   }
-  
-  logout(){
+
+  logout() {
     this.authService.logout()
     this.commonService.setNotAdmin()
     this.router.navigate(['authentication/login'])

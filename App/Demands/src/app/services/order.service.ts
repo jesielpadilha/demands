@@ -4,13 +4,14 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { IOrder } from '../models/order.model';
+import { ITrackOrder } from '../models/track-order.model';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class OrderService {
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<IOrder[]> {
     return this.http.get<IOrder[]>(`${urlAPI}order`, defaultHttpOptions)
@@ -42,6 +43,20 @@ export class OrderService {
 
   getOrdersByTableId(id: number): Observable<IOrder[]> {
     return this.http.get<IOrder[]>(`${urlAPI}order/orders-by-table/${id}`, defaultHttpOptions)
+      .pipe(
+        tap<any>(data => {
+          console.log('Service: ', data)
+          return of(data)
+        }),
+        catchError(error => {
+          console.error(error)
+          return of(false);
+        })
+      )
+  }
+
+  getOrderOpened(): Observable<IOrder[]> {
+    return this.http.get<IOrder[]>(`${urlAPI}order/get-orders-opened`, defaultHttpOptions)
       .pipe(
         tap<any>(data => {
           console.log('Service: ', data)
@@ -95,4 +110,18 @@ export class OrderService {
         })
       )
   }
+
+  setStatusOrder(entity: ITrackOrder): Observable<boolean> {
+    return this.http.post(`${urlAPI}order/set-status-order`, entity, defaultHttpOptions)
+      .pipe(
+        tap<any>(data => {
+          console.log('Service: ', data)
+          return of(data.status === 200)
+        }),
+        catchError(error => {
+          console.error(error)
+          return of(false);
+        })
+      )
+  } 
 }

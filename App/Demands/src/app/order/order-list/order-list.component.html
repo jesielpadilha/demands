@@ -1,12 +1,46 @@
 <div class="row">
   <div class="col-12">
-    <mat-card *ngFor="let item of orders">
+    <mat-card *ngIf="orders.length === 0" class="bg-info">
+      <mat-card-content class="text-center text-white">No Orders found</mat-card-content>
+    </mat-card>
+    <mat-card *ngFor="let item of orders" class="bg-primary text-white">
       <mat-card-title>
-          <!-- {{item.productOrder.product.name}} -->
+        <div class="row">
+          <div class="col-9">
+            <b>Nº {{item.id}}</b> - <b>{{getOrderStatus(item.trackersOrder)}}</b>
+          </div>
+          <div class="col-3 text-right">
+            Table: {{item.table.number}}
+          </div>
+        </div>
       </mat-card-title>
-      <mat-card-content>
-
+      <mat-card-content class="mb-0">
+        <div *ngFor="let itemOrder of item.productsOrder" class="pt-5 pb-5">
+          {{itemOrder.amount}} X {{itemOrder.product.name}}
+        </div>
+        <hr>
+        <div class="mt-2">
+          Obs.: {{item.observation != '' ? item.observation : '--' }}
+        </div>
       </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="bg-info text-white" (click)="start(item.id)"
+          [disabled]="!canStartOrder(item.trackersOrder)">
+          Start
+        </button>
+        <button mat-raised-button class="bg-warning text-white" (click)="ready(item.id)"
+          [disabled]="!canSetAsReadyOrder(item.trackersOrder)">
+          Ready
+        </button>
+        <button mat-raised-button class="bg-success text-white" (click)="ready(item.id)"
+          [disabled]="">
+          Delivered
+        </button>
+        <button mat-raised-button color="accent" (click)="cancel(item.id)"
+          [disabled]="!canCancelOrder(item.trackersOrder)">
+          Cancel
+        </button>
+      </mat-card-actions>
     </mat-card>
   </div>
 </div>

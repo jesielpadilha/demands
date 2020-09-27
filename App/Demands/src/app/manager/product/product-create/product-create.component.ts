@@ -51,9 +51,9 @@ export class ProductCreateComponent implements OnInit {
     }
 
     create(item: IProduct) {
-        item.productsIngredients = item.ingredients.map(ingredientId => {
+        item.productsIngredients = item.ingredients ? item.ingredients.map(ingredientId => {
             return { ingredientId: ingredientId }
-        })
+        }) : null;
 
         this.productService.add(item).subscribe(res => {
             if (res) {

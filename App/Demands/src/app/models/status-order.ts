@@ -13,7 +13,8 @@ export class StatusOrder {
       new StatusOrder(2, 'Being Prepared'),
       new StatusOrder(3, 'Ready'),
       new StatusOrder(4, 'Delivered'),
-      new StatusOrder(5, 'Concluded')
+      new StatusOrder(5, 'Concluded'),
+      new StatusOrder(6, 'Canceled')
     ]
   }
 }

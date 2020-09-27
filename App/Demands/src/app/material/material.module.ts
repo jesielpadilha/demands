@@ -13,11 +13,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule, MatDialogActions } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -34,11 +34,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSelectModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatDialogModule,
     MatSnackBarModule,
     MatCheckboxModule,
     MatRadioModule,
     MatSlideToggleModule,
+    MatDialogModule,
+    MatDialogActions
   ],
   exports: [
     MatCardModule,
@@ -53,11 +54,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSelectModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatDialogModule,
     MatSnackBarModule,
     MatCheckboxModule,
     MatRadioModule,
     MatSlideToggleModule,
+    MatDialogModule,
+    MatDialogActions
   ]
 })
 export class MaterialModule { }

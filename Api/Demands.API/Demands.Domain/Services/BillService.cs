@@ -19,7 +19,7 @@ namespace Demands.Domain.Services
             try
             {
                 var totalBill = order.ProductsOrder.Sum(p => p.Amount * p.Product.Price);
-                if (totalBill == null || totalBill == 0)
+                if (totalBill == 0)
                     return null;
 
                 return _repository.Save(new Bill
@@ -40,7 +40,6 @@ namespace Demands.Domain.Services
             try
             {
                 bill.ClosedDate = DateTime.Now;
-
                 var payment = new Payment
                 {
                     BillId = bill.Id,
@@ -51,8 +50,7 @@ namespace Demands.Domain.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw new Exception("Error to close a Bill");
+                throw new Exception(e.Message);
             }
         }
     }

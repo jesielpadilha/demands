@@ -10,8 +10,7 @@ import { AuthenticationService } from 'src/app/authentication/services/authentic
 
 @Component({
   selector: 'app-order-create',
-  templateUrl: './order-create.component.html',
-  styleUrls: ['./order-create.component.sass']
+  templateUrl: './order-create.component.html'
 })
 export class OrderCreateComponent implements OnInit {
 
@@ -32,7 +31,7 @@ export class OrderCreateComponent implements OnInit {
           productId: product.id,
           product: product,
           amount: 0,
-          ingredients: product?.productsIngredients.length > 0
+          ingredients: product.productsIngredients 
             ? product?.productsIngredients.map(pi => pi.ingredient)
             : [],
           productOrderIngredients: []

@@ -15,8 +15,8 @@
           <h2>Table {{table.number}}</h2>
         </mat-card-content>
       </mat-card>
-      <mat-slide-toggle (change)="changeBusyStatus(table.id)" color="primary" [checked]="table.isBusy"
-        id="isBusySwitch">
+      <mat-slide-toggle (change)="changeBusyStatus(table.id)" color="primary" [checked]="table.isBusy" id="isBusySwitch"
+        [disabled]="this.ordersTable.length > 0 && this.table.isBusy">
         Is Busy?
       </mat-slide-toggle>
     </div>
@@ -31,29 +31,38 @@
               </h1>
             </div>
             <div class="col-6 text-right">
-              <button mat-raised-button color="primary" *ngIf="!isNewOrder" (click)="isNewOrder = true">
+              <button mat-raised-button color="primary" *ngIf="!isNewOrder && table.isBusy" (click)="isNewOrder = true"
+                class="mr-5">
                 New Order
+              </button>
+              <button mat-raised-button color="accent" *ngIf="this.ordersTable.length > 0 && !showPaymentComponent" (click)="pay()">
+                Close bill
               </button>
             </div>
           </div>
         </mat-card-content>
       </mat-card>
-      <app-order-create *ngIf="isNewOrder" (cancelOrder)="cancelNewOrder()" (orderFinished)="orderFinished()">
-      </app-order-create>
+
+      <app-order-create *ngIf="isNewOrder && !showPaymentComponent" (cancelOrder)="cancelNewOrder()" (orderFinished)="orderFinished()"></app-order-create>
+      <app-payment-component *ngIf="showPaymentComponent" (cancelPayment)="cancelPayment()" [billData]="bill"></app-payment-component>
+
       <mat-card *ngIf="!isNewOrder && ordersTable.length > 0">
         <mat-card-subtitle>
           <h3>Orders Table</h3>
         </mat-card-subtitle>
         <mat-card-content>
-          <ul *ngFor="let item of ordersTable">
+          <ul *ngFor="let item of ordersTable" class="list-no-style">
             <li>
+              <button mat-icon-button color="warn" aria-label="Cancel order" title="Cancel order">
+                <mat-icon>delete_forever</mat-icon>
+              </button>
               <b>Nº {{item.id}}</b> - Total: <b>{{getTotalOrder(item.productsOrder) | currency}}</b> -
               <b>{{getOrderStatus(item.trackersOrder)}}</b>
               <div *ngFor="let itemOrder of item.productsOrder">
                 {{itemOrder.amount}} X {{itemOrder.product.name}}
               </div>
               <hr>
-              Obs.: {{item.observation}}
+              Obs.: {{item.observation != '' ? item.observation : '--' }}
             </li>
           </ul>
         </mat-card-content>
