@@ -39,6 +39,7 @@ namespace Demands.Infrastructure.Extensions
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<ITrackOrderService, TrackOrderService>();
             services.AddScoped<IBillService, BillService>();
+            services.AddScoped<ITokenService, TokenService>();
         }
     }
 }

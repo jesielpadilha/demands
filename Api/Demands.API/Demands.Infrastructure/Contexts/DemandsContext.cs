@@ -23,6 +23,8 @@ namespace Demands.Infrastructure.Contexts
         public DbSet<ProductIngredient> ProductIngredient { get; set; }
         public DbSet<ProductOrderIngredient> ProductOrderIngredient { get; set; }
         public DbSet<Bill> Bill { get; set; }
+        public DbSet<Payment> Payment { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,6 +41,7 @@ namespace Demands.Infrastructure.Contexts
             modelBuilder.ApplyConfiguration(new ProductOrderMapping());
             modelBuilder.ApplyConfiguration(new ProductOrderIngredientMapping());
             modelBuilder.ApplyConfiguration(new BillMapping());
+            modelBuilder.ApplyConfiguration(new PaymentMapping());
         }
 
         public override int SaveChanges()

@@ -1,16 +1,18 @@
+using System.Text;
 using Demands.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Demands.API
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        readonly string MyAllowSpecificOrigins = "*";
 
         public Startup(IConfiguration configuration)
         {
@@ -27,7 +29,7 @@ namespace Demands.API
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("*")
+                        builder.WithOrigins(MyAllowSpecificOrigins)
                             .AllowAnyOrigin()
                             .AllowAnyHeader()
                             .AllowAnyMethod();
@@ -35,8 +37,27 @@ namespace Demands.API
             });
 
             services.AddControllers();
-            
+
             services.AddDataAccessServices(Configuration.GetConnectionString("DefaultConnection"));
+
+            var key = Encoding.ASCII.GetBytes(Configuration["Secret"]);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
             //services
             services.RegisterRepositories();
@@ -57,6 +78,7 @@ namespace Demands.API
 
             app.UseCors(MyAllowSpecificOrigins);
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

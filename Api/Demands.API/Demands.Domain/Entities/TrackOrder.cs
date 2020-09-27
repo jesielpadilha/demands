@@ -28,5 +28,7 @@ namespace Demands.Domain.Entities
         Delivered = 4,
         [Description("Concluded")]
         Concluded = 5,
+        [Description("Canceled")]
+        Canceled = 6,
     }
 }

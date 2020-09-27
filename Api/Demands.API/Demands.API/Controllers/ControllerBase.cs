@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Demands.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demands.API.Controllers
@@ -20,12 +21,14 @@ namespace Demands.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IList<TEntity> Get()
         {
             return _service.GetAll();
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id)
         {
             var entity = _service.GetById(id);
@@ -35,6 +38,7 @@ namespace Demands.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] TEntity entity)
         {
             _service.Add(entity);
@@ -42,6 +46,7 @@ namespace Demands.API.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public IActionResult Put([FromBody] TEntity entity)
         {
             var idProperty = entity.GetType().GetProperties().FirstOrDefault(p => p.Name.Equals("Id"));
@@ -60,6 +65,7 @@ namespace Demands.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             var entity = _service.GetById(id);

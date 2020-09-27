@@ -8,11 +8,14 @@ namespace Demands.Domain.Services
     {
         private readonly IUserRepository _repository;
         private readonly ISecurityService _securityService;
+        private readonly ITokenService _tokenService;
 
-        public UserService(IUserRepository repository, ISecurityService securityService) : base(repository)
+
+        public UserService(IUserRepository repository, ISecurityService securityService, ITokenService tokenService) : base(repository)
         {
             _repository = repository;
             _securityService = securityService;
+            _tokenService = tokenService;
         }
 
         public void AddUser(User user)
@@ -34,7 +37,12 @@ namespace Demands.Domain.Services
         public User Login(string username, string password)
         {
             password = _securityService.GenerateHashSha256(password);
-            return _repository.Login(username, password);
+            var user = _repository.Login(username, password);
+
+            if (user == null) return null;
+
+            user.Token = _tokenService.GenerateToken(user);
+            return user;
         }
     }
 }

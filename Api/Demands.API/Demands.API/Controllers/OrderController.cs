@@ -2,6 +2,7 @@
 using System.Linq;
 using Demands.Domain.Entities;
 using Demands.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demands.API.Controllers
@@ -21,12 +22,14 @@ namespace Demands.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IList<Order> Get()
         {
             return _service.GetAll();
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id)
         {
             var order = _service.GetById(id);
@@ -36,6 +39,7 @@ namespace Demands.API.Controllers
         }
 
         [HttpPost("{userId}")]
+        [Authorize]
         public IActionResult Post(int userId, [FromBody] Order order)
         {
             if (userId == 0 || order.ProductsOrder.Count == 0)
@@ -47,6 +51,7 @@ namespace Demands.API.Controllers
         }
 
         [HttpGet("orders-by-table/{id}")]
+        [Authorize]
         public IList<Order> OrdersByTableId(int id)
         {
             var orders = _service.OrdersByTableId(id);

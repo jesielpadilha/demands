@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Demands.Domain.Entities
 {
@@ -14,7 +14,8 @@ namespace Demands.Domain.Entities
 
         public UserType Type { get; set; }
 
-        //public virtual IList<TrackOrder> TrackersOrder { get; set; }
+        [NotMapped]
+        public string Token { get; set; }
     }
 
     public enum UserType { Admin = 1, Manager = 2, Waiter = 3}

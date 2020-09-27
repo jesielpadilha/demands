@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-title>
+        Close the Bill
+    </mat-card-title>
+    <mat-card-content>
+        <h3>Total: {{billData.total}}</h3>
+
+        <form method="post" [formGroup]="form" (ngSubmit)="pay(form.value)" autocomplete="off">
+            <mat-form-field appearance="fill">
+                <mat-label>Payment Method</mat-label>
+                <mat-select matInput formControlName="paymentMethod" required>
+                    <mat-option *ngFor="let method of paymentMethods" [value]="method.id">
+                        {{method.value}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls.paymentMethod.hasError('required')">
+                    Payment Method field is required
+                </mat-error>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" class="mt-5">Pay</button>
+            <button mat-raised-button class="ml-10" (click)="cancel()">Cancel</button>
+        </form>
+        
+    </mat-card-content>
+</mat-card>

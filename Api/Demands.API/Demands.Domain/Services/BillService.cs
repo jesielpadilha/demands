@@ -18,7 +18,6 @@ namespace Demands.Domain.Services
         {
             try
             {
-                //TODO: search products  by Id and calculate the Total of Bill
                 var totalBill = order.ProductsOrder.Sum(p => p.Amount * p.Product.Price);
                 if (totalBill == null || totalBill == 0)
                     return null;
@@ -33,6 +32,27 @@ namespace Demands.Domain.Services
             {
                 Console.WriteLine(e);
                 throw new Exception("Error to save a Bill");
+            }
+        }
+
+        public bool CloseBill(Bill bill, PaymentMethod paymentMethod)
+        {
+            try
+            {
+                bill.ClosedDate = DateTime.Now;
+
+                var payment = new Payment
+                {
+                    BillId = bill.Id,
+                    PaymentMethod = paymentMethod,
+                    Value = bill.Total
+                };
+                return _repository.CloseBill(bill, payment);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw new Exception("Error to close a Bill");
             }
         }
     }

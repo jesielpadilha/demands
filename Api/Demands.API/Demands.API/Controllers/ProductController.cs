@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Demands.Domain.Entities;
 using Demands.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demands.API.Controllers
@@ -18,6 +19,7 @@ namespace Demands.API.Controllers
         }
 
         [HttpGet("get-product/{id}")]
+        [Authorize]
         public IActionResult GetProduct(int id)
         {
             var product = _service.GetById(id);
@@ -38,6 +40,7 @@ namespace Demands.API.Controllers
         }
 
         [HttpGet("get-all-products")]
+        [Authorize]
         public IActionResult GetAllProducts()
         {
             var products = _service.GetAll();

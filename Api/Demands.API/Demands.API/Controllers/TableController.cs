@@ -1,5 +1,6 @@
 ﻿using Demands.Domain.Entities;
 using Demands.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demands.API.Controllers
@@ -15,6 +16,7 @@ namespace Demands.API.Controllers
         }
 
         [HttpGet("change-busy-status/{id}")]
+        [Authorize]
         public IActionResult ChangeBusyStatus(int id)
         {
             var table = _service.ChangeBusyStatus(id);
