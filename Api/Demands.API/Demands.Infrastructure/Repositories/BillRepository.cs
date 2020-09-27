@@ -19,7 +19,7 @@ namespace Demands.Infrastructure.Repositories
             _context.SaveChanges();
             return bill;
         }
-e 
+
         public bool CloseBill(Bill bill, Payment payment)
         {
 
