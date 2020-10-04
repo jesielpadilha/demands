@@ -4,7 +4,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { CategoryService } from '../services/category.service';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-category-list',
@@ -19,7 +18,7 @@ export class CategoryListComponent {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
   @ViewChild('swalEntity') private swalEntity: SwalComponent;
 
-  constructor(private categoryService: CategoryService, public dialog: MatDialog) { }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.loadData();

@@ -11,14 +11,19 @@ import { IUser } from '../models/user.model';
 })
 export class NavbarComponent implements OnInit {
 
-  userAuthenticated
+  userAuthenticated = null
+  _subscription
 
   constructor(public authService: AuthenticationService, public commonService: CommonService,
     private router: Router) {
+
   }
 
   ngOnInit(): void {
-    if(this.authService.isAuthenticated()){
+    this._subscription = this.authService.userChange.subscribe((value) => {
+      this.userAuthenticated = value
+    })
+    if(this.userAuthenticated == null){
       this.userAuthenticated = this.authService.getAuthenticatedUser()
     }
   }
@@ -32,5 +37,10 @@ export class NavbarComponent implements OnInit {
     this.authService.logout()
     this.commonService.setNotAdmin()
     this.router.navigate(['authentication/login'])
+  }
+
+  ngOnDestroy() {
+    //prevent memory leak when component destroyed
+    this._subscription.unsubscribe();
   }
 }

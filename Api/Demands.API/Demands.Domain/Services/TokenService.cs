@@ -34,6 +34,10 @@ namespace Demands.Domain.Services
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-        }    
+
+            //Get expiry time of token:
+            //var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            //return epoch.AddSeconds(<token.exp>);
+        }
     }
 }

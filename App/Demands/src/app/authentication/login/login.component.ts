@@ -18,11 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
-    this.authService.isAuthenticated()
-      ? this.router.navigate(['/home'])
-      : this.router.navigate(['/authentication/login'])
-
-
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', Validators.required);
 
@@ -37,10 +32,7 @@ export class LoginComponent implements OnInit {
       if (!res) {
         this.loginError = 'Username or Password invalid'
       } else {
-        if (this.authService.isAuthenticated()) {
-          this.router.navigate(['/home'])
-          return
-        }
+        this.router.navigate(['/home'])
       }
     })
   }

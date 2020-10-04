@@ -10,10 +10,15 @@ import { Router } from '@angular/router';
 })
 export class NavbarAdminComponent implements OnInit {
 
+  userAuthenticated
+
   constructor(public authService: AuthenticationService, public commonService: CommonService,
     private router: Router) {}
 
   ngOnInit(): void {
+    if(this.userAuthenticated == null){
+      this.userAuthenticated = this.authService.getAuthenticatedUser()
+    }
     this.commonService.setAdmin()
   }
 

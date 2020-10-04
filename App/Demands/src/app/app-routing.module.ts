@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TableDetailsComponent } from './table/table-details/table-details.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { OrderListComponent } from './order/order-list/order-list.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'authentication/login', pathMatch: 'full' },
@@ -13,8 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'manager',
-    loadChildren: () => import('./manager/manager.module').then(a => a.ManagerModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./manager/manager.module').then(a => a.ManagerModule), 
+    canActivate: [AuthGuard, AdminGuard]
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'table-details/:id', component: TableDetailsComponent, canActivate: [AuthGuard] },

@@ -7,7 +7,7 @@
                     New Product
                 </a>
             </div>
-            <div class="col-6">                
+            <div class="col-6">
                 <mat-form-field>
                     <mat-label>Filter</mat-label>
                     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Coca-Cola">
@@ -40,7 +40,7 @@
                 <th mat-header-cell *matHeaderCellDef> Category </th>
                 <td mat-cell *matCellDef="let element"> {{element?.category?.name}} </td>
             </ng-container>
-         
+
             <ng-container matColumnDef="Actions" stickyEnd>
                 <th mat-header-cell *matHeaderCellDef style="text-align: center; width: 15%">
                     <mat-icon>settings</mat-icon>
@@ -49,7 +49,8 @@
                     <button mat-icon-button color="basic" title="Details" (click)="details(element)">
                         <mat-icon>search</mat-icon>
                     </button>
-                    <a mat-icon-button color="basic" title="Update" [routerLink]="['/manager/products/update/', element.id]">
+                    <a mat-icon-button color="basic" title="Update"
+                        [routerLink]="['/manager/products/update/', element.id]">
                         <mat-icon>refresh</mat-icon>
                     </a>
                     <button mat-icon-button color="warn" title="Remove Product" [swal]="deleteSwal"
@@ -67,4 +68,4 @@
     </mat-card-content>
 </mat-card>
 <swal #deleteSwal title="Delete Product" icon="question" [showCancelButton]="true" [focusCancel]="true"></swal>
-<swal #swalEntity  icon="success" timer="1500" toast="true" position="top-right"></swal>
+<swal #swalEntity icon="success" timer="1500" toast="true" position="top-right"></swal>

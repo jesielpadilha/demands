@@ -10,14 +10,13 @@ import { CommonService } from '../../services/common.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public authService: AuthenticationService, private router: Router, 
+  constructor(public authService: AuthenticationService, private router: Router,
     private commonService: CommonService) {
 
-   }
+  }
 
   ngOnInit(): void {
+    this.authService.isAuthenticated()
     this.commonService.setAdmin()
-    if(!this.authService.isAuthenticated()) this.router.navigate(['/authentication/login'])
-  }  
-
+  }
 }

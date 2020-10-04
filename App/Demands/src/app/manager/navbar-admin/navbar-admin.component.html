@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z4 bg-dark text-white" *ngIf="authService.isAuthenticated()">
+<mat-toolbar class="mat-elevation-z4 bg-dark text-white" *ngIf="commonService.isAdmin() && userAuthenticated != null">
     <a routerLink="/manager/home" class="link-logo">
         <mat-icon>fastfood</mat-icon> Demands
     </a>

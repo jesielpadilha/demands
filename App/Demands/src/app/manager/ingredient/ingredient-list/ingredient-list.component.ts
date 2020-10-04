@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { IngredientService } from '../services/ingredient.service';
-import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { IIngredient } from 'src/app/models/ingredient.model';
 
@@ -19,7 +18,7 @@ export class IngredientListComponent implements OnInit {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
   @ViewChild('swalEntity') private swalEntity: SwalComponent;
 
-  constructor(private ingredientService: IngredientService, public dialog: MatDialog) { }
+  constructor(private ingredientService: IngredientService) { }
 
   ngOnInit() {
     this.loadData();

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { UserService } from '../services/user.service';
-import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { IUser, UserType } from 'src/app/models/user.model';
 
@@ -20,7 +19,7 @@ export class UserListComponent implements OnInit {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
   @ViewChild('swalEntity') private swalEntity: SwalComponent;
 
-  constructor(private userService: UserService, public dialog: MatDialog) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.loadData();

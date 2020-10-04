@@ -2,9 +2,16 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/Models/product.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { ProductService } from '../Services/product.service';
+
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +19,7 @@ import { ProductService } from '../Services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  products: IProduct[]
+  products: IProduct[] = []
 
   displayedColumns: string[] = ['Id', 'Name', 'Price', 'Stock', 'Category', 'Actions'];
 
@@ -21,7 +28,7 @@ export class ProductListComponent implements OnInit {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
   @ViewChild('swalEntity') private swalEntity: SwalComponent;
 
-  constructor(private productService: ProductService, public dialog: MatDialog) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.loadData();
@@ -31,6 +38,7 @@ export class ProductListComponent implements OnInit {
     this.productService.getAll().subscribe(items => {
       this.dataSource = new MatTableDataSource<IProduct>(items);
       this.dataSource.paginator = this.paginator;
+      this.products = items
     })
   }
 

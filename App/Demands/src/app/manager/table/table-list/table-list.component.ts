@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ITable } from 'src/app/models/table.model';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
 import { TableService } from '../services/table.service';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -19,7 +18,7 @@ export class TableListComponent implements OnInit {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
   @ViewChild('swalEntity') private swalEntity: SwalComponent;
 
-  constructor(private tableService: TableService, public dialog: MatDialog) { }
+  constructor(private tableService: TableService) { }
 
   ngOnInit() {
     this.loadData();

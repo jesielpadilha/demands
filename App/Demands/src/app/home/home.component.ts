@@ -17,12 +17,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/authentication/login'])
-    } else {
-       this.tableService.getAll().subscribe(tables => {
-        this.tables = tables
-       })
-    }
+    // if (this.authService.isAuthenticated()) {
+    //   this.tableService.getAll().subscribe(tables => {
+    //     this.tables = tables
+    //   })
+    // }
+    this.tableService.getAll().subscribe(tables => {
+      this.tables = tables
+    })
   }
 }
